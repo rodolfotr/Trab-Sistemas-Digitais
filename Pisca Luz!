@@ -1,0 +1,15 @@
+module Pisca(
+    reg luz;
+  );
+
+  always #3 luz = ~luz;
+
+
+  initial begin
+    $dumpvars(0, luz);
+    #3;
+    luz <= 0;
+    #500;
+    $finish;
+  end
+endmodule
