@@ -1,5 +1,5 @@
 module Pisca(
-    input luz;
+    input luz,
     output fio
   );
 assign fio = luz;
