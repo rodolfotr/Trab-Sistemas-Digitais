@@ -1,13 +1,18 @@
 module Pisca(
-    reg luz;
+    input luz;
+    output fio
   );
+assign fio = luz;
 
-  always #3 luz = ~luz;
+endmodule
 
+module Test;
+
+  reg luz;
+    always #3 luz <= ~luz;
 
   initial begin
     $dumpvars(0, luz);
-    #3;
     luz <= 0;
     #500;
     $finish;
