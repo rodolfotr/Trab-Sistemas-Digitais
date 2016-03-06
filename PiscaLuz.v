@@ -7,17 +7,17 @@ module Pisca(
 
 endmodule
 
-module Test(output luz);
+module Test(output V);
 
   reg clk;
   wire fio;
   
     always #3 clk <= ~clk;
     
-    Pisca luz(clk, fio);
+    Pisca V(clk, fio);
 
   initial begin
-    $dumpvars(0, luz);
+    $dumpvars(0, V);
     clk <= 0;
     #300;
     $finish;
