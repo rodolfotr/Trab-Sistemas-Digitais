@@ -1,20 +1,25 @@
 module Pisca(
-    input luz,
+    input clk,
     output fio
   );
-assign fio = luz;
+  
+    assign fio = clk;
 
 endmodule
 
-module Test;
+module Test(output luz);
 
-  reg luz;
-    always #3 luz <= ~luz;
+  reg clk;
+  wire fio;
+  
+    always #3 clk <= ~clk;
+    
+    Pisca luz(clk, fio);
 
   initial begin
     $dumpvars(0, luz);
-    luz <= 0;
-    #500;
+    clk <= 0;
+    #300;
     $finish;
   end
 endmodule
