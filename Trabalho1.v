@@ -7,7 +7,8 @@ module Pisca(
 
 endmodule
 
-module Test(output V);
+module Test(output clk,
+                    fio);
 
   reg clk;
   wire fio;
