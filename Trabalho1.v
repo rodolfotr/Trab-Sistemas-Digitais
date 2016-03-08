@@ -14,7 +14,7 @@ module Test(output V);
   
     always #3 clk <= ~clk;
     
-    Pisca V(clk, fio);
+    Pisca P(clk, fio);
 
   initial begin
     $dumpvars(0, V);
