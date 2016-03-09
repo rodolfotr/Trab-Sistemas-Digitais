@@ -1,0 +1,40 @@
+module TOP;
+	module CONT(
+input CLK_50,
+input RST,
+input W,
+output [25:0] N
+);
+
+	module COMP(
+input [25:0]N,
+output [1:0]W 
+);
+
+always @(posedge CLK_50 | posedge RST) begin
+	if(RST | W)
+	N <= 0;
+	else if(CLK_50)
+	N <= N+1;
+
+	else if(N = 50000000)
+	W = 1;
+	
+
+
+
+
+endmodule
+
+	module COMP;
+input [25:0]N;
+output W;
+
+always @(N 
+
+endmodule
+
+	module LED;
+
+
+endmodule
