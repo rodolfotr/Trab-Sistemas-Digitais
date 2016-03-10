@@ -1,40 +1,74 @@
-module TOP;
-	module CONT(
-input CLK_50,
-input RST,
-input W,
-output [25:0] N
-);
-
-	module COMP(
-input [25:0]N,
-output [1:0]W 
-);
-
-always @(posedge CLK_50 | posedge RST) begin
-	if(RST | W)
-	N <= 0;
-	else if(CLK_50)
-	N <= N+1;
-
-	else if(N = 50000000)
-	W = 1;
+module TOP(input CLOCK_50, output [1:0]LED);
+   
+   reg [32:0] cont;
+   reg LedOn=0;
+   
+   assign LED[0] = LedOn;
+   assign LED[1] = ~LedOn;
 	
-
-
-
-
+   always @(posedge CLOCK_50) begin		
+      if(cont == 50000000) begin
+	 LedOn = ~LedOn;
+	 cont = 0;
+      end
+      else begin
+	 cont <= cont+1;
+      end
+   end
+   
+endmodule
+   
+module test;
+   
+   reg clk;
+   wire [1:0]Led;
+   
+   
+   TOP A(clk,
+		Led);
+   
+   always #1 clk = ~clk;
+   
+   initial begin
+      $dumpvars(0, A);
+      #0;
+      clk <= 0;
+      #400000000;
+      $finish;   
+   end
 endmodule
 
-	module COMP;
-input [25:0]N;
-output W;
 
-always @(N 
+00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
-endmodule
+module TOP;
+  
+  module cont(
+    input clk,
+    input w,
+    input rst,
+    output [25:0]n
+  );
+  
+  always @(posedge clk | posedge rst | posedge w) begin
+    if(rst | w) begin
+      n = 0;
+end
+    if(clk) begin
+      n = clk+1;
+end
+  end
+ 
+ endmodule
+ 
+ module comp(
+  input [25:0]n,
+  output [1:0]w
+ );
 
-	module LED;
-
-
-endmodule
+  
+ 
+ endmodule
