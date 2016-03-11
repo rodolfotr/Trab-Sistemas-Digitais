@@ -34,6 +34,10 @@ module test;
       reset <= 1;
       #1
       reset <= 0;
+      #50000
+      reset <= 1;
+      #50001
+      reset <= 0;
       CLOCK_50 <= 0;
       #100000000;
       $finish;   
