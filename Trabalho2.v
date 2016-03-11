@@ -3,8 +3,6 @@ module TOP(input CLOCK_50, input reset, output LED);
    reg [32:0] cont;
    reg LedOn=0;
    
-   assign LED[0] = LedOn;
-   assign LED[1] = ~LedOn;
    initial begin
    cont[25:0] <= 0;
    end
