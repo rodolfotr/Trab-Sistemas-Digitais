@@ -35,7 +35,7 @@ module test;
       #1
       reset <= 0;
       CLOCK_50 <= 0;
-      #10000;
+      #100000;
       $finish;   
    end
 endmodule
