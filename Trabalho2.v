@@ -1,4 +1,4 @@
-module TOP(input CLOCK_50, output [1:0]LED);
+module TOP(input CLOCK_50, input reset, output [1:0]LED);
    
    reg [32:0] cont;
    reg LedOn=0;
@@ -8,7 +8,11 @@ module TOP(input CLOCK_50, output [1:0]LED);
    initial begin
    cont[32:0] <= 0;
    end
-   always @(posedge CLOCK_50) begin		
+   always @(posedge CLOCK_50) begin
+   	if(reset ==1) begin
+   	cont = 0;
+   	LedOn = 0;
+   	end
       if(cont == 5000) begin
 	 LedOn = ~LedOn;
 	 cont = 0;
@@ -22,12 +26,11 @@ endmodule
    
 module test;
    
-   reg clk;
+   reg reset, clk;
    wire [1:0]Led;
    
    
-   TOP A(cont,
-		Led);
+   TOP A(cont, reset, Led);
    
    always #1 clk = ~clk;
    
