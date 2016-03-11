@@ -21,13 +21,13 @@ endmodule
    
 module test;
    
-   reg reset, clk;
+   reg reset, CLOCK_50;
    wire LED;
    
    
-   TOP A(cont, reset, LED);
+   TOP A(CLOCK_50, reset, LED);
    
-   always #1 clk = ~clk;
+   always #1 CLOCK_50 = ~CLOCK_50;
    
    initial begin
       $dumpvars(0, A);
@@ -35,7 +35,7 @@ module test;
       reset <= 1;
       #1
       reset <= 0;
-      clk <= 0;
+      CLOCK_50 <= 0;
       #600000;
       $finish;   
    end
