@@ -1,4 +1,4 @@
-module TOP(input CLOCK_50, input reset, output [1:0]LED);
+module TOP(input CLOCK_50, input reset, output LED);
    
    reg [32:0] cont;
    reg LedOn=0;
