@@ -1,11 +1,8 @@
 module TOP(input CLOCK_50, input reset, output LED);
    
-   reg [32:0] cont;
-   reg LedOn=0;
+   reg [25:0] cont;
+   reg LedOn = 0;
    
-   initial begin
-   cont[25:0] <= 0;
-   end
    always @(posedge CLOCK_50) begin
    	if(reset ==1) begin
    	cont = 0;
@@ -25,7 +22,7 @@ endmodule
 module test;
    
    reg reset, clk;
-   wire Led;
+   wire LED;
    
    
    TOP A(cont, reset, LED);
