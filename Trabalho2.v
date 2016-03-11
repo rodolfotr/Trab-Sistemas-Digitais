@@ -5,7 +5,9 @@ module TOP(input CLOCK_50, output [1:0]LED);
    
    assign LED[0] = LedOn;
    assign LED[1] = ~LedOn;
-	
+   initial begin
+   cont[32:0] <= 0;
+   end
    always @(posedge CLOCK_50) begin		
       if(cont == 50000000) begin
 	 LedOn = ~LedOn;
@@ -32,7 +34,7 @@ module test;
    initial begin
       $dumpvars(0, A);
       #0;
-      clk <= 1;
+      clk <= 0;
       #400000000;
       $finish;   
    end
