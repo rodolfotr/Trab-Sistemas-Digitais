@@ -3,7 +3,7 @@ module TOP(input CLOCK_50, input reset, output LED);
    reg [25:0] cont;
    reg LED = 0;
    
-   always @(posedge CLOCK_50) begin
+   always @(posedge CLOCK_50, reset) begin
    	if(reset == 1) begin
    	cont = 0;
    	LED = 0;
@@ -21,9 +21,8 @@ endmodule
    
 module test;
    
-   reg reset, CLOCK_50, cont;
+   reg reset, CLOCK_50;
    wire LED;
-   
    
    TOP A(CLOCK_50, reset, LED);
    
@@ -36,7 +35,6 @@ module test;
       #1
       reset <= 0;
       CLOCK_50 <= 0;
-      cont <= 0;
       #600000;
       $finish;   
    end
