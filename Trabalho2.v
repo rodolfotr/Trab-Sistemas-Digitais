@@ -21,7 +21,7 @@ endmodule
    
 module test;
    
-   reg reset, CLOCK_50;
+   reg reset, CLOCK_50, cont;
    wire LED;
    
    
@@ -36,6 +36,7 @@ module test;
       #1
       reset <= 0;
       CLOCK_50 <= 0;
+      cont <= 0;
       #600000;
       $finish;   
    end
