@@ -26,7 +26,7 @@ module test;
    wire [1:0]Led;
    
    
-   TOP A(clk,
+   TOP A(clk, cont,
 		Led);
    
    always #1 clk = ~clk;
