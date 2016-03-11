@@ -6,7 +6,7 @@ module TOP(input CLOCK_50, input reset, output [1:0]LED);
    assign LED[0] = LedOn;
    assign LED[1] = ~LedOn;
    initial begin
-   cont[32:0] <= 0;
+   cont[25:0] <= 0;
    end
    always @(posedge CLOCK_50) begin
    	if(reset ==1) begin
@@ -30,7 +30,7 @@ module test;
    wire [1:0]Led;
    
    
-   TOP A(cont, reset, Led);
+   TOP A(cont, reset, LED);
    
    always #1 clk = ~clk;
    
@@ -41,7 +41,7 @@ module test;
       #1
       reset <= 0;
       clk <= 0;
-      #400000000;
+      #600000;
       $finish;   
    end
 endmodule
