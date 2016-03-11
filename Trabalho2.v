@@ -20,24 +20,3 @@ module TOP(input CLOCK_50, input reset, output LED);
    end
    
 endmodule
-   
-module test;
-   
-   reg reset, CLOCK_50;
-   wire LED;
-   
-   TOP A(CLOCK_50, reset, LED);
-   
-   always #1 CLOCK_50 = ~CLOCK_50;
-   
-   initial begin
-      $dumpvars(0, A);
-      #0;
-      reset <= 1;
-      #1
-      reset <= 0;
-      CLOCK_50 <= 0;
-      #5000;
-      $finish;   
-   end
-endmodule
