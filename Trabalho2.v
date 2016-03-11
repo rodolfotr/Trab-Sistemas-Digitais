@@ -27,7 +27,7 @@ endmodule
 module test;
    
    reg reset, clk;
-   wire [1:0]Led;
+   wire Led;
    
    
    TOP A(cont, reset, LED);
