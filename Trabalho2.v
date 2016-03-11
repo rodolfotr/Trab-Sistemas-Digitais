@@ -8,7 +8,7 @@ module TOP(input CLOCK_50, input reset, output LED);
    	cont = 0;
    	LED = 0;
    	end
-      if(cont == 5000) begin
+      if(cont == 50000000) begin
 	 LED = ~LED;
 	 cont = 0;
       end
@@ -35,7 +35,7 @@ module test;
       #1
       reset <= 0;
       CLOCK_50 <= 0;
-      #600000;
+      #100000000;
       $finish;   
    end
 endmodule
