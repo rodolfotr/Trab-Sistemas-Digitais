@@ -1,7 +1,7 @@
 module TOP(input CLOCK_50, input reset, output LED);
    
    reg [25:0] cont;
-   reg LED = 0;
+   reg LED;
    
    always @(posedge CLOCK_50, reset) begin
    	if(reset == 1) begin
