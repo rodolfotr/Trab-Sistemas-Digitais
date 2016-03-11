@@ -24,7 +24,7 @@ module test;
    wire [1:0]Led;
    
    
-   TOP A(clk, cont,
+   TOP A(clk,
 		Led);
    
    always #1 clk = ~clk;
@@ -32,7 +32,6 @@ module test;
    initial begin
       $dumpvars(0, A);
       #0;
-      cont <= 0;
       clk <= 1;
       #400000000;
       $finish;   
