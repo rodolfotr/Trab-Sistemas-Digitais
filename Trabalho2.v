@@ -4,9 +4,9 @@ module TOP(input CLOCK_50, input reset, output LED);
    reg LED = 0;
    
    always @(posedge CLOCK_50) begin
-   	if(reset ==1) begin
+   	if(reset == 1) begin
    	cont = 0;
-   	LedOn = 0;
+   	LED = 0;
    	end
       if(cont == 5000) begin
 	 LED = ~LED;
