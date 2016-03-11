@@ -1,7 +1,7 @@
 module TOP(input CLOCK_50, input reset, output LED);
    
    reg [25:0] cont;
-   reg LedOn = 0;
+   reg LED = 0;
    
    always @(posedge CLOCK_50) begin
    	if(reset ==1) begin
@@ -9,7 +9,7 @@ module TOP(input CLOCK_50, input reset, output LED);
    	LedOn = 0;
    	end
       if(cont == 5000) begin
-	 LedOn = ~LedOn;
+	 LED = ~LED;
 	 cont = 0;
       end
       else begin
