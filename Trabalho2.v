@@ -10,11 +10,11 @@ module Led (input CLOCK_50, input [0:0]KEY, output [0:0]LEDG);
    	counter = 0;
    	state = 0;
    	end else begin
-      		if(cont == 50000000) begin
+      		if(counter == 50000000) begin
 	 counter = 0;
 	 state = ~state;
 	end else begin
-		cont <= cont + 1;
+		counter <= counter + 1;
       	end
       	end
    end
