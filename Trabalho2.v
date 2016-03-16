@@ -1,22 +1,22 @@
-module TOP(input CLOCK_50, input reset, output LED);
+module values(input CLOCK_50, input [0:0]KEY, output [0:0]LEDG);
    
-   reg [25:0] cont;
-   reg state;
+   reg [25:0] counter;
+   reg state=0;
    
-   assign LED = state;
+   assign LEDG = state;
    
-   always @(posedge CLOCK_50, reset) begin
-   	if(reset == 1) begin
-   	cont = 0;
+   always @(posedge CLOCK_50) begin
+   	if(KEY[0] == 1) begin
+   	counter = 0;
    	state = 0;
-   	end
-      if(cont == 500) begin
-	 state = ~state;
+   	end else begin
+      		if(cont == 50000000) begin
 	 cont = 0;
-      end
-      else begin
-	 cont <= cont+1;
-      end
+	 state = ~state;
+	end else begin
+		cont <= cont + 1;
+      	end
+      	end
    end
    
 endmodule
